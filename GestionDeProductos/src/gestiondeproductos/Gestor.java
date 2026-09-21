@@ -4,6 +4,7 @@
  */
 package gestiondeproductos;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -15,6 +16,7 @@ public class Gestor extends javax.swing.JFrame {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Gestor.class.getName());
      private DefaultTableModel modelo = new DefaultTableModel(); /* nombramos la tabla y la instanciamos */
 
+    
     /**
      * Creates new form Gestor
      */
@@ -73,6 +75,7 @@ public class Gestor extends javax.swing.JFrame {
         jbtnAgregar.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jbtnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8-carrito-de-compras-48.png"))); // NOI18N
         jbtnAgregar.setText("Agregar");
+        jbtnAgregar.addActionListener(this::jbtnAgregarActionPerformed);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -142,9 +145,9 @@ public class Gestor extends javax.swing.JFrame {
                         .addGap(30, 30, 30)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
+                        .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,6 +166,26 @@ public class Gestor extends javax.swing.JFrame {
     private void jtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtNombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtNombreActionPerformed
+
+    private void jbtnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnAgregarActionPerformed
+     // TODO add your handling code here:
+     String categoria = jCbxCategoria.getSelectedItem().toString();
+     String nombre = jtNombre.getText();
+     String precio = jtPrecio.getText();
+     if (nombre.isEmpty() || precio.isEmpty()) {
+    JOptionPane.showMessageDialog(this, "Completar todos los campos");
+    return;
+}
+     modelo.addRow(new Object[]{
+        nombre,
+        categoria,
+        precio
+    });
+
+    jtNombre.setText("");
+    jtPrecio.setText("");
+
+    }//GEN-LAST:event_jbtnAgregarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -218,3 +241,4 @@ for(Categoria cat : Categoria.values()){  /*creo variable categori interna para 
 }
 }
 }
+
