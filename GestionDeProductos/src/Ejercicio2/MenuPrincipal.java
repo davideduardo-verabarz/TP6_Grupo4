@@ -119,6 +119,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void jMenuItemPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPrecioActionPerformed
         escritorio.removeAll();
         escritorio.repaint();
+        NewJInternalFrame njif = new NewJInternalFrame();
+        njif.setVisible(true);
+        escritorio.add(njif);
         
         // Descomentar esto al crear la consulta por Precio:
         // ConsultaPrecioView cpv = new ConsultaPrecioView();
