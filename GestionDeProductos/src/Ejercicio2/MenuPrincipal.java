@@ -105,6 +105,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         escritorio.removeAll();
         escritorio.repaint();
+        vistaPorNombre vpn = new vistaPorNombre();
+        vpn.setVisible(true);
+        escritorio.add(vpn);
         
         // Descomentar esto al crear la consulta por Nombre:
         // ConsultaNombreView cnv = new ConsultaNombreView();

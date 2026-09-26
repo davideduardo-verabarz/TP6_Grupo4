@@ -4,17 +4,26 @@
  */
 package Ejercicio2;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Usuario
  */
 public class vistaPorNombre extends javax.swing.JInternalFrame {
 
+    private DefaultTableModel modeloNombre = new DefaultTableModel(){
+     public boolean isCellEditable(int f, int c){
+     
+         return false;
+     }
+    };
     /**
      * Creates new form vistaPorNombre
      */
     public vistaPorNombre() {
         initComponents();
+        armarCabecera();
     }
 
     /**
@@ -31,7 +40,15 @@ public class vistaPorNombre extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jtNombre = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTProducto = new javax.swing.JTable();
+
+        setPreferredSize(new java.awt.Dimension(410, 400));
+        try {
+            setSelected(true);
+        } catch (java.beans.PropertyVetoException e1) {
+            e1.printStackTrace();
+        }
+        setVisible(true);
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel1.setText("Listado por Nombre");
@@ -45,7 +62,7 @@ public class vistaPorNombre extends javax.swing.JInternalFrame {
         jtNombre.setToolTipText("");
         jtNombre.addActionListener(this::jtNombreActionPerformed);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTProducto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -56,7 +73,7 @@ public class vistaPorNombre extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTProducto);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -106,7 +123,16 @@ public class vistaPorNombre extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTProducto;
     private javax.swing.JTextField jtNombre;
     // End of variables declaration//GEN-END:variables
+
+private void armarCabecera(){
+    modeloNombre.addColumn("Codigo");
+    modeloNombre.addColumn("Descripcion");
+    modeloNombre.addColumn("Precio");
+    modeloNombre.addColumn("Categoria");
+    modeloNombre.addColumn("Stock");
+    jTProducto.setModel(modeloNombre);
+}
 }
