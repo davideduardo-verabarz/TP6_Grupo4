@@ -24,6 +24,7 @@ public class vistaPorNombre extends javax.swing.JInternalFrame {
     public vistaPorNombre() {
         initComponents();
         armarCabecera();
+        /*this.setSize(400, 302);*/
     }
 
     /**
@@ -42,13 +43,14 @@ public class vistaPorNombre extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTProducto = new javax.swing.JTable();
 
-        setPreferredSize(new java.awt.Dimension(410, 400));
+        setPreferredSize(new java.awt.Dimension(420, 360));
         try {
             setSelected(true);
         } catch (java.beans.PropertyVetoException e1) {
             e1.printStackTrace();
         }
-        setVisible(true);
+        setVerifyInputWhenFocusTarget(false);
+        setVisible(false);
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel1.setText("Listado por Nombre");
@@ -61,6 +63,11 @@ public class vistaPorNombre extends javax.swing.JInternalFrame {
 
         jtNombre.setToolTipText("");
         jtNombre.addActionListener(this::jtNombreActionPerformed);
+        jtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jtNombreKeyReleased(evt);
+            }
+        });
 
         jTProducto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -117,6 +124,24 @@ public class vistaPorNombre extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtNombreActionPerformed
 
+    private void jtNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtNombreKeyReleased
+   modeloNombre.setRowCount(0); /* limpia la tabla con una nueva busqueda */
+   String textoBusqueda = jtNombre.getText().trim().toLowerCase();/*genero una variable de tipo string para esxtraerla y pasar todo a minuscula */
+   for(ProductoEj2 prod:MenuPrincipal.listaProductos){
+       String descripcionProd = prod.getDescripcion().toLowerCase();
+               if (descripcionProd.startsWith(textoBusqueda)) {
+            
+            modeloNombre.addRow(new Object[]{// Lennamos el ARRAY: Añadimos las filas al objeto "modeloNombre"
+                prod.getCodigo(),
+                prod.getDescripcion(),
+                prod.getPrecio(),
+                prod.getRubro(),
+                prod.getStock()
+            });
+        }
+   }
+    }//GEN-LAST:event_jtNombreKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -134,5 +159,6 @@ private void armarCabecera(){
     modeloNombre.addColumn("Categoria");
     modeloNombre.addColumn("Stock");
     jTProducto.setModel(modeloNombre);
+    
 }
 }
