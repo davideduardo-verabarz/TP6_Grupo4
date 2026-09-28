@@ -4,6 +4,8 @@
  */
 package Ejercicio2;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Jess Moran
@@ -250,7 +252,36 @@ public class GestionProductosView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnCerrarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        // TODO add your handling code here:
+        try {
+            
+            int codigo = Integer.parseInt(txtCodigo.getText().trim());
+            String descripcion = txtDescripcion.getText().trim();
+            double precio = Double.parseDouble(txtPrecio.getText().trim());
+            int stock = (Integer) jSpinnerStock.getValue();
+            String rubro = cbRubro.getSelectedItem().toString();
+            
+            ProductoEj2 nuevo = new ProductoEj2(codigo, descripcion, precio, stock, rubro);
+            
+            if (descripcion.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "La descripcion no puede estar vacia");
+                return;
+            }
+            
+            if (MenuPrincipal.listaProductos.add(nuevo)){
+                JOptionPane.showMessageDialog(this, "Producto Guardado");
+                
+                txtCodigo.setText("");
+                txtDescripcion.setText("");
+                txtPrecio.setText("");
+                jSpinnerStock.setValue(0);
+            } else {
+                JOptionPane.showMessageDialog(this, "Ya Existe prod con ese codigo");
+            }
+            
+            
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Ingrese valores numericos adecuados para Cod, Precio y Stock");
+        }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
 

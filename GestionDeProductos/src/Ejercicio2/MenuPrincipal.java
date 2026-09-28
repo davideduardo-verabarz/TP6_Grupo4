@@ -144,10 +144,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemProductosActionPerformed
 
     private void jMenuItemRubroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemRubroActionPerformed
-//        escritorio.removeAll();
-//        escritorio.repaint();
+        escritorio.removeAll();
+        escritorio.repaint();
         
-        // Descomentar esto al crear la consulta por Rubro:
             FrmListadoRubro flr = new FrmListadoRubro();
             flr.setVisible(true);
             escritorio.add(flr);

@@ -4,20 +4,49 @@
  */
 package Ejercicio2;
 
+import javax.swing.table.DefaultTableModel;
+import javax.swing.JOptionPane;
 /**
  *
  * @author analf
  */
 public class FrmListadoRubro extends javax.swing.JInternalFrame {
-
+    
+    private DefaultTableModel modelo = new DefaultTableModel() {
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            return false;
+        }
+    };
     /**
      * Creates new form FrmListadoRubro
      */
     public FrmListadoRubro() {
         initComponents();
+         armarCabecera();
+         cargarRubros();
+         jComboBoxRubroActionPerformed(null);
          this.setVisible(true); 
     }
-
+    
+    
+    private void armarCabecera() {
+        modelo.addColumn("Codigo");
+        modelo.addColumn("Descripcion");
+        modelo.addColumn("Precio");
+        modelo.addColumn("Stock");
+        modelo.addColumn("Rubro");
+        jTable1.setModel(modelo);
+    }
+    
+    private void cargarRubros() {
+        jComboBoxRubro.removeAllItems();
+        
+        jComboBoxRubro.addItem("Comestibles");
+        jComboBoxRubro.addItem("Limpieza");
+        jComboBoxRubro.addItem("Perfumeria");
+        jComboBoxRubro.addItem("Electronica");
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -39,6 +68,8 @@ public class FrmListadoRubro extends javax.swing.JInternalFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setText("Rubro:");
+
+        jComboBoxRubro.addActionListener(this::jComboBoxRubroActionPerformed);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -109,6 +140,34 @@ public class FrmListadoRubro extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jComboBoxRubroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxRubroActionPerformed
+        modelo.setRowCount(0);
+        
+        if (jComboBoxRubro.getSelectedItem() == null) return;
+        
+        String rubroSeleccionado = jComboBoxRubro.getSelectedItem().toString().trim();
+        
+        System.out.println("Productos totales en memoria: " + MenuPrincipal.listaProductos.size());
+        
+        for (ProductoEj2 prod: MenuPrincipal.listaProductos){
+            String rubroProd = String.valueOf(prod.getRubro()).trim();
+            if (rubroProd.equalsIgnoreCase(rubroSeleccionado)){
+                modelo.addRow(new Object[]{
+                    prod.getCodigo(),
+                    prod.getDescripcion(),
+                    prod.getPrecio(),
+                    prod.getRubro(),
+                    prod.getStock()
+                });
+            }
+            
+            jTable1.revalidate();
+            jTable1.repaint();
+        }
+        
+        
+    }//GEN-LAST:event_jComboBoxRubroActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> jComboBoxRubro;
@@ -119,4 +178,5 @@ public class FrmListadoRubro extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+
 }
