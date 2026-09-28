@@ -49,11 +49,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         escritorio.setLayout(escritorioLayout);
         escritorioLayout.setHorizontalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 388, Short.MAX_VALUE)
+            .addGap(0, 540, Short.MAX_VALUE)
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 265, Short.MAX_VALUE)
+            .addGap(0, 466, Short.MAX_VALUE)
         );
 
         jMenuAdministracion.setText("Administracion");
@@ -119,7 +119,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void jMenuItemPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPrecioActionPerformed
         escritorio.removeAll();
         escritorio.repaint();
-        NewJInternalFrame njif = new NewJInternalFrame();
+        vistaPorPrecio njif = new vistaPorPrecio();
         njif.setVisible(true);
         escritorio.add(njif);
         

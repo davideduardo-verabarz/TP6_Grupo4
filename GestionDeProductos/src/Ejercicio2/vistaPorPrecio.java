@@ -8,12 +8,12 @@ package Ejercicio2;
  *
  * @author Keke
  */
-public class NewJInternalFrame extends javax.swing.JInternalFrame {
+public class vistaPorPrecio extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form NewJInternalFrame
      */
-    public NewJInternalFrame() {
+    public vistaPorPrecio() {
         initComponents();
     }
 
