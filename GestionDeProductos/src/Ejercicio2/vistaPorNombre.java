@@ -13,6 +13,7 @@ import javax.swing.table.DefaultTableModel;
 public class vistaPorNombre extends javax.swing.JInternalFrame {
 
     private DefaultTableModel modeloNombre = new DefaultTableModel(){
+     @Override
      public boolean isCellEditable(int f, int c){
      
          return false;
@@ -71,13 +72,10 @@ public class vistaPorNombre extends javax.swing.JInternalFrame {
 
         jTProducto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Codigo", "Descripcion", "Precio", "Categoria", "Stock"
             }
         ));
         jScrollPane1.setViewportView(jTProducto);

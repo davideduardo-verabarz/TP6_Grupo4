@@ -42,10 +42,9 @@ public class FrmListadoRubro extends javax.swing.JInternalFrame {
     private void cargarRubros() {
         jComboBoxRubro.removeAllItems();
         
-        jComboBoxRubro.addItem("Comestibles");
+        jComboBoxRubro.addItem("Comestible");
         jComboBoxRubro.addItem("Limpieza");
-        jComboBoxRubro.addItem("Perfumeria");
-        jComboBoxRubro.addItem("Electronica");
+        jComboBoxRubro.addItem("Perfumería");
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -69,6 +68,8 @@ public class FrmListadoRubro extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setText("Rubro:");
 
+        jComboBoxRubro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Comestible", "Limpieza", "Perfumería" }));
+        jComboBoxRubro.addItemListener(this::jComboBoxRubroItemStateChanged);
         jComboBoxRubro.addActionListener(this::jComboBoxRubroActionPerformed);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -167,6 +168,10 @@ public class FrmListadoRubro extends javax.swing.JInternalFrame {
         
         
     }//GEN-LAST:event_jComboBoxRubroActionPerformed
+
+    private void jComboBoxRubroItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxRubroItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxRubroItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
