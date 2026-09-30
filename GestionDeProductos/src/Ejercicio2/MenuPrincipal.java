@@ -3,7 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Ejercicio2;
-
+import javax.swing.ImageIcon;
+import java.awt.Image;
 import java.util.TreeSet;
 
 /**
@@ -34,7 +35,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        escritorio = new javax.swing.JDesktopPane();
+        ImageIcon icono = new ImageIcon(getClass().getResource("/Imagenes/deTodoSuper.jpg"));
+        Image miImagen = icono.getImage();
+        escritorio = new javax.swing.JDesktopPane() {
+            @Override
+            public void paintComponent(java.awt.Graphics g) {
+                super.paintComponent(g);
+                if (miImagen != null) {
+                    g.drawImage(miImagen, 0, 0, getWidth(), getHeight(), this);
+                }
+            }
+        };
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuAdministracion = new javax.swing.JMenu();
         jMenuItemProductos = new javax.swing.JMenuItem();

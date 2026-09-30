@@ -153,7 +153,7 @@ public class vistaPorPrecio extends javax.swing.JInternalFrame {
     
             }
             
-            }catch(NumberFormatException e){}  /*si se ingresa una letra o algo invallid el catch frena el error */
+            }catch(NumberFormatException e){}  /*si se ingresa una letra o algo invalid el catch frena el error */
         }
         
 
