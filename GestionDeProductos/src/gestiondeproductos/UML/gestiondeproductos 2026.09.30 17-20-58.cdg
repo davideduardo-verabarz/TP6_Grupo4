@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="gestiondeproductos">
+  <ClassDiagramComponents>
+    <Enum name="Categoria" package="gestiondeproductos" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Literals>
+        <Literal name="LIMPIEZA"/>
+        <Literal name="ELECTRONICA"/>
+        <Literal name="INDUMENTARIA"/>
+        <Literal name="BAZAR"/>
+        <Literal name="FARMACIA"/>
+      </Literals>
+    </Enum>
+    <Class name="GestionDeProductos" package="gestiondeproductos" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Gestor" package="gestiondeproductos" visibility="public" xPosition="620.0" yPosition="20.0">
+      <Fields>
+        <Field name="logger" type="java.util.logging.Logger" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="modelo" type="DefaultTableModel" visibility="private"/>
+        <Field name="jCbxCategoria" type="javax.swing.JComboBox&lt;String&gt;" visibility="private"/>
+        <Field name="jLabel1" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel4" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jPanel1" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="jScrollPane1" type="javax.swing.JScrollPane" visibility="private"/>
+        <Field name="jTProductos" type="javax.swing.JTable" visibility="private"/>
+        <Field name="jbtnAgregar" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jlbCategoria" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jlbNombre" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jtNombre" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="jtPrecio" type="javax.swing.JTextField" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+void" visibility="private"/>
+        <Method name="jtNombreActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jbtnAgregarActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="args"/>
+        </Method>
+        <Method name="armarCabecera" returnType="void" visibility="private"/>
+        <Method name="cargarComboBox" returnType="void" visibility="private"/>
+      </Methods>
+    </Class>
+    <Class name="Producto" package="gestiondeproductos" visibility="public" xPosition="920.0" yPosition="20.0">
+      <Fields>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="categoria" type="Categoria" visibility="private"/>
+        <Field name="precio" type="double" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="nombre"/>
+          <Argument type="Categoria" name="categoria"/>
+          <Argument type="double" name="precio"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getNombre" returnType="String" visibility="public"/>
+        <Method name="setNombre" returnType="void" visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Method>
+        <Method name="getCategoria" returnType="Categoria" visibility="public"/>
+        <Method name="setCategoria" returnType="void" visibility="public">
+          <Argument type="Categoria" name="categoria"/>
+        </Method>
+        <Method name="getPrecio" returnType="double" visibility="public"/>
+        <Method name="setPrecio" returnType="void" visibility="public">
+          <Argument type="double" name="precio"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation source="gestiondeproductos.Producto" target="gestiondeproductos.Categoria" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="categoria" source="gestiondeproductos.Producto" target="gestiondeproductos.Categoria" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
