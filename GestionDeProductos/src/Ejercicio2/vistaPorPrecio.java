@@ -130,8 +130,13 @@ public class vistaPorPrecio extends javax.swing.JInternalFrame {
         private void buscarPorPrecio() {
             modeloPrecio.setRowCount(0);
             
-            double minimo = Double.parseDouble(txtMinimo.getText());
-            double maximo = Double.parseDouble(txtMaximo.getText());
+            try{
+                               /* aca anexamos el metodo.trim para limpiar los espacios vacios delante y a tras  */
+            String textoMin = txtMinimo.getText().trim();
+            String textoMax = txtMaximo.getText().trim();
+                
+            double minimo = textoMin.isEmpty() ? 0 : Double.parseDouble(textoMin);
+            double maximo = textoMax.isEmpty() ? 999999999 : Double.parseDouble(textoMax);  /*en estas lineas ponemos el 0 para q no tome el valor nulo cuando este vacio y el otro q tome el maximo al 9 con 9 cifras  */
             
             for (ProductoEj2 prod : MenuPrincipal.listaProductos) {
                 double precio = prod.getPrecio();
@@ -147,8 +152,10 @@ public class vistaPorPrecio extends javax.swing.JInternalFrame {
             }
     
             }
-    
-            }
+            
+            }catch(NumberFormatException e){}  /*si se ingresa una letra o algo invallid el catch frena el error */
+        }
+        
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
